@@ -9,7 +9,7 @@ Point::Point() : Point(0, 0) {}
 
 Point::Point(int x, int y) : 
     m_pos(sf::Vector2f((float) x, (float) y)), 
-    m_velocity(sf::Vector2f(0, 0)),
+    m_prev_pos(m_pos),
     m_locked(false) { std::cout << (float) x << std::endl; }
 
 void Point::set_lock(bool locked) { m_locked = locked; }
@@ -30,12 +30,13 @@ void Point::update(float deltaTime)
     {
         // point velocity
         sf::Vector2f tmp = m_pos;
-        m_pos += m_velocity;
+        float alpha = (float) (1 - 1e-5);
+        m_pos += (m_pos - m_prev_pos) * alpha;
         // gravity
         m_pos += gravity * deltaTime * deltaTime * sf::Vector2f(0, 1);
 
-        // update velocity
-        m_velocity = m_pos - tmp;
+        // update previous position
+        m_prev_pos = tmp;
     }
 }
 

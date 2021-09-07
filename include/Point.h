@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <math.h>
 
-static float const gravity = 200;
+static float const gravity = 1000;
 static float const PT_RANGE = 8;
 
 float norm(sf::Vector2f);
@@ -26,7 +26,7 @@ public:
 
 private:
     sf::Vector2f m_pos;
-    sf::Vector2f m_velocity;
+    sf::Vector2f m_prev_pos;
     bool m_locked;
 };
 
