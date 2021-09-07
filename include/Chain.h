@@ -5,6 +5,7 @@
 #include "Stick.h"
 
 static int const SIZE = 10;
+static int const N_ITER = 100;
 
 class Chain {
     public:    
@@ -12,6 +13,7 @@ class Chain {
 
     void update(float deltaTime);
     void draw(sf::RenderWindow *);
+    void lock(int id);
 
     private:
     Stick m_sticks[SIZE-1];

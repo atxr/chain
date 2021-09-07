@@ -12,6 +12,8 @@ int main()
     
     // Build points and sticks
     Chain chain;
+    chain.lock(0);
+    chain.lock(5);
 
     sf::Clock deltaClock;
     float deltaTime(0.f);

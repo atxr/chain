@@ -11,6 +11,8 @@ Point::Point(int x, int y) :
 void Point::lock() { m_locked = true; }
 
 sf::Vector2f Point::get_pos() { return m_pos; }
+void Point::set_pos(sf::Vector2f pos) { m_pos = pos; }
+bool Point::is_locked() { return m_locked; }
 
 void Point::update(float deltaTime)
 {
@@ -32,5 +34,9 @@ void Point::draw(sf::RenderWindow *p_window)
     sf::CircleShape circle = sf::CircleShape(10);
     circle.setOrigin(5,5);
     circle.setPosition(m_pos);
+    if (m_locked)
+    {
+        circle.setFillColor(sf::Color::Red);
+    }
     p_window->draw(circle);
 }

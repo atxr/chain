@@ -6,15 +6,17 @@
 class Stick {
 public:
     Stick();
-    Stick(Point a, Point b);
+    Stick(Point *a, Point *b);
     
-    sf::Vector2f get_a();
-    sf::Vector2f get_b();
+    sf::Vector2f get_center();
+    sf::Vector2f get_dir();
 
+    void update();
     void draw(sf::RenderWindow *);
 
 private:
-    sf::Vector2f m_center, m_dir;
+    Point *a;
+    Point *b;
     float m_length;
 };
 

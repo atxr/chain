@@ -11,6 +11,8 @@ public:
     Point(int x, int y);
 
     sf::Vector2f get_pos();
+    void set_pos(sf::Vector2f pos);
+    bool is_locked();
 
     void lock();
     void update(float deltaTime);
