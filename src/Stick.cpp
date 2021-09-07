@@ -1,9 +1,5 @@
 #include "Stick.h"
-#include <math.h>
 #include <iostream>
-
-float norm(sf::Vector2f v) { return sqrt(v.x*v.x + v.y*v.y); }
-sf::Vector2f normalize(sf::Vector2f v) { return v / norm(v); }
 
 Stick::Stick() : Stick(NULL, NULL) {}
 Stick::Stick(Point *a, Point *b) : a(a), b(b)

@@ -2,8 +2,13 @@
 #define POINT_H
 
 #include <SFML/Graphics.hpp>
+#include <math.h>
 
 static float const gravity = 200;
+static float const PT_RANGE = 8;
+
+float norm(sf::Vector2f);
+sf::Vector2f normalize(sf::Vector2f);
 
 class Point {
 public:
@@ -12,9 +17,10 @@ public:
 
     sf::Vector2f get_pos();
     void set_pos(sf::Vector2f pos);
+    void set_lock(bool locked);
     bool is_locked();
 
-    void lock();
+    bool is_clicked(int mouseX, int mouseY);
     void update(float deltaTime);
     void draw(sf::RenderWindow *);
 

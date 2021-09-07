@@ -12,8 +12,8 @@ int main()
     
     // Build points and sticks
     Chain chain;
-    chain.lock(0);
-    chain.lock(5);
+    chain.set_lock(0, true);
+    chain.set_lock(5, true);
 
     bool pause = true;
     int mode = 0;
@@ -38,9 +38,15 @@ int main()
                                 case(0):
                                     chain.add_pt(Point(event.mouseButton.x, event.mouseButton.y));
                                     break;
-                                case(1):
+                                case(1): {
                                     // lock the selected Point
-                                    break;
+                                    int id = chain.find_point(event.mouseButton.x, event.mouseButton.y);
+                                    if (id != -1) {
+                                        cout << "ok" << endl;
+                                        chain.set_lock(id, true);
+                                    }
+                                    break; 
+                                    }
                                 default:
                                     // add stick
                                     break;
@@ -52,9 +58,14 @@ int main()
                                 case(0):
                                     // delete a point
                                     break;
-                                case(1):
+                                case(1): {
                                     // unlock the selected Point
+                                    int id = chain.find_point(event.mouseButton.x, event.mouseButton.y);
+                                    if (id != -1) {
+                                        chain.set_lock(id, false);
+                                    }
                                     break;
+                                    }
                                 default:
                                     // remove stick
                                     break;
@@ -72,7 +83,7 @@ int main()
                             pause = !pause;
                             break;
                         case (sf::Keyboard::LControl):
-                            mode = mode + 1 % 3;
+                            mode = (mode + 1) % 3;
                             break;
                         default:
                             break;
@@ -86,7 +97,9 @@ int main()
 
         window.clear();
         
-        chain.update(deltaTime);
+        if (!pause) {
+            chain.update(deltaTime);
+        }
         chain.draw(&window);
 
         window.display();
