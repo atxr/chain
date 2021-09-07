@@ -7,7 +7,11 @@ static float const gravity = 200;
 
 class Point {
 public:
+    Point();
     Point(int x, int y);
+
+    sf::Vector2f get_pos();
+
     void lock();
     void update(float deltaTime);
     void draw(sf::RenderWindow *);
