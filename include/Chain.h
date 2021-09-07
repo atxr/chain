@@ -14,10 +14,11 @@ class Chain {
     void update(float deltaTime);
     void draw(sf::RenderWindow *);
     void lock(int id);
+    void add_pt(Point pt);
 
     private:
-    Stick m_sticks[SIZE-1];
-    Point m_pts[SIZE];
+    std::vector<Stick> m_sticks;
+    std::vector<Point> m_pts;
 };
 
 #endif

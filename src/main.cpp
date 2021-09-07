@@ -25,6 +25,15 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+                    chain.add_pt(Point(event.mouseButton.x, event.mouseButton.y));
+                    cout << "Point added" << endl;
+                }
+            }
         }
 
         window.clear();
