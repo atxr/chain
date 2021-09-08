@@ -1,14 +1,6 @@
 #include "Chain.h"
 
-Chain::Chain()
-{
-    for (int i=0; i<SIZE; i++) {
-        m_pts.push_back(Point(i*100, i*i*3));
-    }
-    for (int i=0; i<SIZE-1; i++) {
-        m_sticks.push_back(Stick(&m_pts[i], &m_pts[i+1]));
-    }
-}
+Chain::Chain() {}
 
 int Chain::find_point(int x, int y)
 {
@@ -30,7 +22,14 @@ void Chain::set_lock(int id, bool locked)
 
 void Chain::add_pt(Point pt)
 {
+    // TODO check if not redondant point
     m_pts.push_back(pt);
+}
+
+void Chain::add_stick(int id1, int id2)
+{
+    // TODO check if not redondant stick
+    m_sticks.push_back(Stick(&m_pts[id1], &m_pts[id2]));
 }
 
 void Chain::update(float deltaTime)

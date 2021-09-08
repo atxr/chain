@@ -12,14 +12,13 @@ int main()
     
     // Build points and sticks
     Chain chain;
-    chain.set_lock(0, true);
-    chain.set_lock(5, true);
-
-    bool pause = true;
-    int mode = 0;
 
     sf::Clock deltaClock;
     float deltaTime(0.f);
+
+    bool pause = true;
+    int mode = 0;
+    int last_clicked = -1;
 
     while (window.isOpen())
     {
@@ -47,9 +46,23 @@ int main()
                                     }
                                     break; 
                                     }
-                                default:
+                                default: {
+                                    int clicked = chain.find_point(event.mouseButton.x, event.mouseButton.y);
+                                    if (clicked != -1)
+                                    {
+                                        if (last_clicked == -1)
+                                        {
+                                            last_clicked = clicked;
+                                        } else {
+                                            chain.add_stick(clicked, last_clicked);
+                                            last_clicked = -1;
+                                        }
+
+                                    }
                                     // add stick
+
                                     break;
+                                    }
                             }
                             break;
 
@@ -82,9 +95,14 @@ int main()
                         case (sf::Keyboard::Space):
                             pause = !pause;
                             break;
-                        case (sf::Keyboard::LControl):
+                        case (sf::Keyboard::LControl): {
+                            // change mode
                             mode = (mode + 1) % 3;
+
+                            // reset last_clicked point for stick creation
+                            last_clicked = -1;
                             break;
+                            }
                         default:
                             break;
                     }
