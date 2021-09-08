@@ -5,7 +5,7 @@
 #include "Stick.h"
 
 static int const SIZE = 10;
-static int const N_ITER = 5;
+static int const N_ITER = 10;
 
 class Chain {
     public:    

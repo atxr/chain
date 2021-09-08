@@ -41,7 +41,6 @@ int main()
                                     // lock the selected Point
                                     int id = chain.find_point(event.mouseButton.x, event.mouseButton.y);
                                     if (id != -1) {
-                                        cout << "ok" << endl;
                                         chain.set_lock(id, true);
                                     }
                                     break; 
