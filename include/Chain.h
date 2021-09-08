@@ -10,6 +10,7 @@ static int const N_ITER = 10;
 class Chain {
     public:    
     Chain();
+    Chain(int, int);
 
     int find_point(int x, int y);
     void update(float deltaTime);
@@ -19,8 +20,8 @@ class Chain {
     void add_stick(int id1, int id2);
 
     private:
-    std::vector<Stick> m_sticks;
-    std::vector<Point> m_pts;
+    std::vector<Stick*> m_sticks;
+    std::vector<Point*> m_pts;
 };
 
 #endif

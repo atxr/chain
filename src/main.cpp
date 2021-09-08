@@ -11,7 +11,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1200, 600), "sfml-app");
     
     // Build points and sticks
-    Chain chain;
+    Chain chain(11,6);
 
     sf::Clock deltaClock;
     float deltaTime(0.f);
