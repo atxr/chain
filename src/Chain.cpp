@@ -1,6 +1,39 @@
 #include "Chain.h"
 
-Chain::Chain() {}
+Chain::Chain() 
+{
+    //pendule with mass
+    m_pts.push_back(new Point(600, 200));
+    m_pts.push_back(new Point(500, 200));
+    m_pts.push_back(new Point(400, 200));
+    
+    m_pts.push_back(new Point(300, 200));
+    m_pts.push_back(new Point(200, 200));
+    m_pts.push_back(new Point(250, 150));
+    m_pts.push_back(new Point(250, 250));
+
+    m_pts[0]->set_lock(true);
+
+    m_sticks.push_back(new Stick(m_pts[0], m_pts[1]));
+    m_sticks.push_back(new Stick(m_pts[1], m_pts[2]));
+    m_sticks.push_back(new Stick(m_pts[2], m_pts[3]));
+    m_sticks.push_back(new Stick(m_pts[3], m_pts[4]));
+    m_sticks.push_back(new Stick(m_pts[3], m_pts[5]));
+    m_sticks.push_back(new Stick(m_pts[3], m_pts[6]));
+    m_sticks.push_back(new Stick(m_pts[4], m_pts[5]));
+    m_sticks.push_back(new Stick(m_pts[4], m_pts[6]));
+
+    //double pendule
+    m_pts.push_back(new Point(1000, 200));
+    m_pts.push_back(new Point(1075, 200));
+    m_pts.push_back(new Point(1150, 200));
+
+    m_pts[7]->set_lock(true);
+
+    m_sticks.push_back(new Stick(m_pts[7], m_pts[8]));
+    m_sticks.push_back(new Stick(m_pts[9], m_pts[8]));
+}
+
 Chain::Chain(int m, int n)
 {
     for (int i=0; i<m; i++) {
@@ -42,10 +75,10 @@ void Chain::set_lock(int id, bool locked)
     m_pts[id]->set_lock(locked);
 }
 
-void Chain::add_pt(Point pt)
+void Chain::add_pt(Point *pt)
 {
     // TODO check if not redondant point
-    m_pts.push_back(&pt);
+    m_pts.push_back(pt);
 }
 
 void Chain::add_stick(int id1, int id2)

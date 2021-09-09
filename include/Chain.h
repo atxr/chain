@@ -16,7 +16,7 @@ class Chain {
     void update(float deltaTime);
     void draw(sf::RenderWindow *);
     void set_lock(int id, bool locked);
-    void add_pt(Point pt);
+    void add_pt(Point *pt);
     void add_stick(int id1, int id2);
 
     private:

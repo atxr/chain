@@ -11,7 +11,8 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1200, 600), "sfml-app");
     
     // Build points and sticks
-    Chain chain(11,6);
+    Chain chain;
+    //Chain chain(11,6);
 
     sf::Clock deltaClock;
     float deltaTime(0.f);
@@ -35,7 +36,7 @@ int main()
                         case (sf::Mouse::Left):
                             switch (mode) {
                                 case(0):
-                                    chain.add_pt(Point(event.mouseButton.x, event.mouseButton.y));
+                                    chain.add_pt(new Point(event.mouseButton.x, event.mouseButton.y));
                                     break;
                                 case(1): {
                                     // lock the selected Point

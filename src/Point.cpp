@@ -28,7 +28,7 @@ void Point::update(float deltaTime)
     sf::Vector2f tmp = m_pos;
     if (!m_locked)
     {
-        float alpha = (float) (1 - 1e-4);
+        float alpha = (float) (1 - 1e-5);
         m_pos += (m_pos - m_prev_pos) * alpha;
         // gravity
         //m_pos += gravity * deltaTime * deltaTime * sf::Vector2f(0, 1);
